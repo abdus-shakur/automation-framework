@@ -1,7 +1,7 @@
-package com.xrame.ElementLocation;
+package com.shakur.ElementLocation;
 
-import com.xrame.Core.DynamicElement;
-import com.xrame.Core.Element;
+import com.shakur.Core.interfaces.DynamicElement;
+import com.shakur.Core.interfaces.Element;
 
 public class WhatsappHomePage {
 	

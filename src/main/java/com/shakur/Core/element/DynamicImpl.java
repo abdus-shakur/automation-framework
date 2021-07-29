@@ -1,8 +1,10 @@
-package com.xrame.Core;
+package com.shakur.Core.element;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+
+import com.shakur.Core.interfaces.DynamicElement;
 
 public class DynamicImpl implements DynamicElement {
 	

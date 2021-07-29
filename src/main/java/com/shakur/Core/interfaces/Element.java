@@ -1,4 +1,4 @@
-package com.xrame.Core;
+package com.shakur.Core.interfaces;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;

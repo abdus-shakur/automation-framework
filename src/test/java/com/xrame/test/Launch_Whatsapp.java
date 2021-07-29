@@ -10,10 +10,10 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import com.xrame.Core.Base;
-import com.xrame.Core.POMFactory;
-import com.xrame.Core.Utilities;
-import com.xrame.ElementLocation.WhatsappHomePage;
+import com.shakur.Core.baseDriver.BaseImpl;
+import com.shakur.Core.pageFactory.POMFactory;
+import com.shakur.Core.utilities.Utilities;
+import com.shakur.ElementLocation.WhatsappHomePage;
 
 public class Launch_Whatsapp {
 
@@ -31,7 +31,7 @@ public class Launch_Whatsapp {
 	}
 	
 	public WebDriver LaunchWhatsapp(String dataLocatoin) {
-		return driver = Base.launch(dataLocatoin, "https://web.whatsapp.com/");
+		return driver = BaseImpl.launch(dataLocatoin, "https://web.whatsapp.com/");
 	}
 	
 	public void searchContact(String nameOrMobile) {
@@ -108,7 +108,7 @@ public class Launch_Whatsapp {
 		wh.typeMessage.getElement().sendKeys(null==new Utilities().readClipboardText()?"":new Utilities().readClipboardText(), Keys.ENTER);
 		new Utilities().readClipboardImage();
 		wh.typeMessage.getElement().sendKeys(Keys.chord(Keys.CONTROL,"V"), Keys.ENTER);
-		Base.takeScreenshot(driver, "Test.png");
+		Utilities.takeScreenshot(driver, "Test.png");
 		driver.quit();
 	}
 
