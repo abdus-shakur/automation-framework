@@ -12,7 +12,7 @@
 - Supports Selenium Grid Integration.
 - Config file driver driver initialization.
 
-###### [Email Author](mailto://abdusshakurt@gmail.com)
+###### [Email : Shakur](mailto://abdusshakurt@gmail.com)
 ###### [Author : Abdus Shakur](https://abdus-shakur.github.io/profile?redirect=test)
 
 
