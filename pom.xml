@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>io.github.abdus-shakur</groupId>
 	<artifactId>automation-framework</artifactId>
-	<version>1.0.9</version>
+	<version>2.0.0</version>
 
 	<name>Extended Automation Framework</name>
 	<description>Customizable web elements and dynamic Xpaths.</description>
@@ -49,6 +49,14 @@
 	</properties>
 
 	<dependencies>
+
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>1.18.20</version>
+			<scope>provided</scope>
+		</dependency>
+
 		<dependency>
 			<groupId>org.testng</groupId>
 			<artifactId>testng</artifactId>
@@ -131,20 +139,20 @@
 				</executions>
 			</plugin>
 
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-gpg-plugin</artifactId>
-				<version>1.5</version>
-				<executions>
-					<execution>
-						<id>sign-artifacts</id>
-						<phase>verify</phase>
-						<goals>
-							<goal>sign</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
+<!-- 			<plugin> -->
+<!-- 				<groupId>org.apache.maven.plugins</groupId> -->
+<!-- 				<artifactId>maven-gpg-plugin</artifactId> -->
+<!-- 				<version>1.5</version> -->
+<!-- 				<executions> -->
+<!-- 					<execution> -->
+<!-- 						<id>sign-artifacts</id> -->
+<!-- 						<phase>verify</phase> -->
+<!-- 						<goals> -->
+<!-- 							<goal>sign</goal> -->
+<!-- 						</goals> -->
+<!-- 					</execution> -->
+<!-- 				</executions> -->
+<!-- 			</plugin> -->
 
 			<plugin>
 				<groupId>org.sonatype.plugins</groupId>

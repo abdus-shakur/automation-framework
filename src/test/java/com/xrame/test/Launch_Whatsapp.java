@@ -10,40 +10,47 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import com.shakur.Core.baseDriver.BaseImpl;
+import com.shakur.Core.baseDriver.Base;
 import com.shakur.Core.pageFactory.POMFactory;
+import com.shakur.Core.utilities.AutomationOptions;
 import com.shakur.Core.utilities.Utilities;
 import com.shakur.ElementLocation.WhatsappHomePage;
 
 public class Launch_Whatsapp {
 
-	WebDriver driver;
-
 	public static void main(String[] args) {
 
 		List<String> instances = new ArrayList<String>();
-		instances.add("C:\\Users\\USER1\\AppData\\Local\\Temp\\User Data 2");
+		instances.add("C:\\Users\\SHA\\AppData\\Local\\Temp\\User Data 2");
 		instances.parallelStream().forEach(instance -> {
 			Launch_Whatsapp whats = new Launch_Whatsapp();
-			whats.LaunchWhatsapp(instance);
-			whats.checkOnlineStatus(instance, "Test User");
+			WebDriver driver = whats.LaunchWhatsapp(instance);
+			Utilities.takeScreenshot(driver, System.getProperty("user.dir")+"/src/test/resources/test34.png");
+			whats.checkOnlineStatus(instance, "Shakur jio",driver);
 		});
 	}
 	
 	public WebDriver LaunchWhatsapp(String dataLocatoin) {
-		return driver = BaseImpl.launch(dataLocatoin, "https://web.whatsapp.com/");
+		AutomationOptions autOptions = new AutomationOptions();
+		autOptions.setDataLocation(dataLocatoin);
+		autOptions.setFullScreen(false);
+		autOptions.setDisableAutomationOverLay(false);
+		autOptions.setHeadless(true);
+		return Base.launch(autOptions, "https://web.whatsapp.com/");
 	}
 	
 	public void searchContact(String nameOrMobile) {
 		
 	}
 	
-	public void checkOnlineStatus(String instance,String name) {
+	public void checkOnlineStatus(String instance,String name,WebDriver driver) {
+		driver.navigate().refresh();
 		WhatsappHomePage wh = POMFactory.generate(driver, WhatsappHomePage.class);
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(100), Duration.ofMillis(100));
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(25), Duration.ofMillis(100));
 		wait.until(ExpectedConditions.numberOfElementsToBeMoreThan(wh.chatRow.dynamicBy(name), 0));
 		wh.chatRow.dynamic(name).click();
-		wait.until(ExpectedConditions.visibilityOf(wh.typeMessage.getElement()));
+		Utilities.takeScreenshot(driver, System.getProperty("user.dir")+"/src/test/resources/test35.png");
+		wait.until(ExpectedConditions.visibilityOf(wh.typeMessage.get()));
 		Boolean previousState = null;
 		Boolean currentState = false;
 		StringBuilder str = new StringBuilder();
@@ -98,16 +105,16 @@ public class Launch_Whatsapp {
 		
 	}
 
-	public void sendMessageForName(String instance,String name,String messageText){
+	public void sendMessageForName(String instance,String name,String messageText,WebDriver driver){
 		WhatsappHomePage wh = POMFactory.generate(driver, WhatsappHomePage.class);
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(100), Duration.ofMillis(100));
 		wait.until(ExpectedConditions.numberOfElementsToBeMoreThan(wh.chatRow.dynamicBy(name), 0));
 		wh.chatRow.dynamic(name).click();
-		wait.until(ExpectedConditions.visibilityOf(wh.typeMessage.getElement()));
-		wh.typeMessage.getElement().click();
-		wh.typeMessage.getElement().sendKeys(null==new Utilities().readClipboardText()?"":new Utilities().readClipboardText(), Keys.ENTER);
+		wait.until(ExpectedConditions.visibilityOf(wh.typeMessage.get()));
+		wh.typeMessage.get().click();
+		wh.typeMessage.get().sendKeys(null==new Utilities().readClipboardText()?"":new Utilities().readClipboardText(), Keys.ENTER);
 		new Utilities().readClipboardImage();
-		wh.typeMessage.getElement().sendKeys(Keys.chord(Keys.CONTROL,"V"), Keys.ENTER);
+		wh.typeMessage.get().sendKeys(Keys.chord(Keys.CONTROL,"V"), Keys.ENTER);
 		Utilities.takeScreenshot(driver, "Test.png");
 		driver.quit();
 	}

@@ -17,11 +17,10 @@ public class DynamicImpl implements DynamicElement {
 	}
 
 	@Override
-	public WebElement getElement() {
+	public WebElement get() {
 		return driver.findElement(elementPath);
 	}
 	
-	@Override
 	public DynamicElement setElement(String location) {
 		this.location = location;
 		elementPath =  By.xpath(location);
@@ -36,6 +35,11 @@ public class DynamicImpl implements DynamicElement {
 	@Override
 	public By dynamicBy(String dynamic) {
 		return By.xpath(String.format(location,dynamic));
+	}
+	
+	@Override
+	public By by() {
+		return elementPath;
 	}
 	
 }

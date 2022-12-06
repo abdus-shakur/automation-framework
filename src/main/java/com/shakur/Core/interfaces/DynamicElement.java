@@ -5,12 +5,12 @@ import org.openqa.selenium.WebElement;
 
 public interface DynamicElement {
 	
-	public WebElement getElement();
+	public WebElement get();
 
-	DynamicElement setElement(String location);
-	
 	public WebElement dynamic(String location);
 
 	By dynamicBy(String dynamic);
+	
+	By by();
 	
 }

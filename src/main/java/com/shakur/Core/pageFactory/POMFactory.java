@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 import org.openqa.selenium.WebDriver;
 
-import com.shakur.Core.baseDriver.BaseImpl;
+import com.shakur.Core.baseDriver.Base;
 import com.shakur.Core.element.DynamicImpl;
 import com.shakur.Core.interfaces.DynamicElement;
 import com.shakur.Core.interfaces.Element;
@@ -16,7 +16,7 @@ public class POMFactory {
 
 	public static void main(String[] args)
 			throws ClassNotFoundException, InstantiationException, IllegalAccessException {
-		POMFactory dt = POMFactory.generate(BaseImpl.initiateDefaultDriver(), POMFactory.class);
+		POMFactory dt = POMFactory.generate(Base.initiateDefaultDriver(), POMFactory.class);
 		dt.linkElement.dynamic("test").click();
 		dt.linkElement.dynamic("find").click();
 	}
