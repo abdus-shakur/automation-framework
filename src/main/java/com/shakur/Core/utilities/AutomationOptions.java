@@ -9,6 +9,8 @@ public class AutomationOptions {
 	
 	private boolean fullScreen;
 	
+	private boolean remoteExecution;
+	
 	private boolean disableAutomationOverLay;
 	
 	private String dataLocation; 

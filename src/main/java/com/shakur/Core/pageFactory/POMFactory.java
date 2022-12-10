@@ -1,5 +1,6 @@
 package com.shakur.Core.pageFactory;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.Arrays;
 
 import org.openqa.selenium.WebDriver;
@@ -23,7 +24,7 @@ public class POMFactory {
 
 	public static <T> T generate(WebDriver driver, Class<T> dynamicClass) {
 		try {
-			T obje = dynamicClass.newInstance();
+			T obje = dynamicClass.getDeclaredConstructor().newInstance();
 			Arrays.asList(dynamicClass.getFields()).stream().forEach(field -> {
 				if (field.getType().equals(DynamicElement.class))
 					try {
@@ -32,7 +33,7 @@ public class POMFactory {
 					}
 			});
 			return obje;
-		} catch (InstantiationException | IllegalAccessException e1) {
+		} catch (InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException | NoSuchMethodException | SecurityException e1) {
 			return null;
 		}
 
